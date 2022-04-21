@@ -262,6 +262,7 @@
   "scripts": {
     "test": "test"
   },
+  "test": "test",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Zallmatt/Tp1-Canepa-Tomasella-Zalazar.git"
