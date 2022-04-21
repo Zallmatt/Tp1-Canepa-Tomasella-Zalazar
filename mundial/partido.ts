@@ -2,13 +2,14 @@ import { Equipo } from "./equipo";
 import { Grupo } from "./grupo";
 
 
-export class Partido{
+export class Partido {
     public numPartido: Number;
     public grupo: Grupo;
     public equipoLocal: Equipo;
     public equipoVisitante: Equipo;
-    public finalizarPartidoRegular:boolean = false;
-    public finalizarPartidoTotal:boolean=false;
+    public finalizarPartidoRegular: boolean = false;
+    public finalizarPartidoTotal: boolean = false;
+    public abandonar = false;
 
     constructor() {
     }
@@ -40,107 +41,108 @@ export class Partido{
         }
     }
     //Partidos
-    public devolverPartido(partido: Partido): string{
+    public devolverPartido(partido: Partido): string {
         return "Local: " + partido.equipoLocal.nombreEquipo + " Visitante: " + partido.equipoVisitante.nombreEquipo;
     }
 
+
     //Goles
-    public sumaGolLocal(){
-        if(this.finalizarPartidoRegular==false){
+    public sumaGolLocal() {
+        if (this.finalizarPartidoRegular == false) {
             this.equipoLocal.sumarGolPartido();
-        }else{
+        } else {
             return "Error";
         }
     }
-    public sumaGolVisitante(){
-        if(this.finalizarPartidoRegular==false){
+    public sumaGolVisitante() {
+        if (this.finalizarPartidoRegular == false) {
             this.equipoVisitante.sumarGolPartido();
-        }else{
+        } else {
             return "Error";
         }
     }
     //GolesSuplementario
-    public sumaGolLocalSuplementario(){
-        if(this.finalizarPartidoRegular==true && this.finalizarPartidoTotal==false){
+    public sumaGolLocalSuplementario() {
+        if (this.finalizarPartidoRegular == true && this.finalizarPartidoTotal == false) {
             this.equipoLocal.sumarGolPartido();
             this.equipoLocal.sumarGolSuplementario();
         }
     }
-    public sumaGolVisitanteSuplementario(){
-        if(this.finalizarPartidoRegular==true && this.finalizarPartidoTotal==false){
+    public sumaGolVisitanteSuplementario() {
+        if (this.finalizarPartidoRegular == true && this.finalizarPartidoTotal == false) {
             this.equipoVisitante.sumarGolPartido();
             this.equipoVisitante.sumarGolSuplementario();
         }
     }
     //GolesNormal
-    public ObtenerGolesLocalNormal(){
-        let aux:number;
-        aux=this.equipoLocal.golPartido - this.equipoLocal.golTiempoSuplementario
+    public ObtenerGolesLocalNormal() {
+        let aux: number;
+        aux = this.equipoLocal.golPartido - this.equipoLocal.golTiempoSuplementario
         return aux
     }
-    public ObtenerGolesVisitanteNormal(){
-        let aux:number;
-        aux=this.equipoVisitante.golPartido - this.equipoVisitante.golTiempoSuplementario
+    public ObtenerGolesVisitanteNormal() {
+        let aux: number;
+        aux = this.equipoVisitante.golPartido - this.equipoVisitante.golTiempoSuplementario
         return aux
     }
     //Conteo Goles Suplementarios
-    public ObtenerGolesLocalSuplementarios(){
+    public ObtenerGolesLocalSuplementarios() {
         return this.equipoLocal.golTiempoSuplementario;
     }
-    public ObtenerGolesVisitanteSuplementarios(){
+    public ObtenerGolesVisitanteSuplementarios() {
         return this.equipoVisitante.golTiempoSuplementario;
     }
     //Goles Total
-    public ObtenerGolesLocalTotal(){
+    public ObtenerGolesLocalTotal() {
         return this.equipoLocal.golesTotales;
     }
-    public ObtenerGolesVisitanteTotal(){
+    public ObtenerGolesVisitanteTotal() {
         return this.equipoVisitante.golesTotales;
     }
 
     //Partido Terminado
-    public finPartidoRegular(){
-        this.finalizarPartidoRegular=true;
+    public finPartidoRegular() {
+        this.finalizarPartidoRegular = true;
     }
-    public finPartido(){
-        this.finalizarPartidoTotal=true;
-        if(this.finalizarPartidoTotal==true){
+    public finPartido() {
+        this.finalizarPartidoTotal = true;
+        if (this.finalizarPartidoTotal == true) {
             this.puntosLocal();
             this.puntosVisitante();
             this.equipoLocal.golesTotalesEquipo();
             this.equipoVisitante.golesTotalesEquipo();
-            for(let i=0; i<4; i++){
-                if(this.grupo.Equipos[i].nombreEquipo==this.equipoLocal.nombreEquipo){
+            for (let i = 0; i < 4; i++) {
+                if (this.grupo.Equipos[i].nombreEquipo == this.equipoLocal.nombreEquipo) {
                     this.grupo.Equipos[i] = this.equipoLocal;
                 }
             }
-            for(let j=0; j<4; j++){
-                if(this.grupo.Equipos[j].nombreEquipo==this.equipoVisitante.nombreEquipo){
+            for (let j = 0; j < 4; j++) {
+                if (this.grupo.Equipos[j].nombreEquipo == this.equipoVisitante.nombreEquipo) {
                     this.grupo.Equipos[j] = this.equipoVisitante;
                 }
             }
         }
     }
     //Puntos obtenidos
-    public puntosLocal(){
-        if(this.equipoLocal.golPartido>this.equipoVisitante.golPartido){
+    public puntosLocal() {
+        if (this.equipoLocal.golPartido > this.equipoVisitante.golPartido) {
             this.equipoLocal.puntosTotalesGrupo(3);
             return 3;
-        }else if(this.equipoLocal.golPartido==this.equipoVisitante.golPartido){
+        } else if (this.equipoLocal.golPartido == this.equipoVisitante.golPartido) {
             this.equipoLocal.puntosTotalesGrupo(1);
             return 1;
-        }else{
+        } else {
             return 0;
         }
     }
-    public puntosVisitante(){
-        if(this.equipoLocal.golPartido<this.equipoVisitante.golPartido){
+    public puntosVisitante() {
+        if (this.equipoLocal.golPartido < this.equipoVisitante.golPartido) {
             this.equipoVisitante.puntosTotalesGrupo(3);
             return 3;
-        }else if(this.equipoLocal.golPartido==this.equipoVisitante.golPartido){
+        } else if (this.equipoLocal.golPartido == this.equipoVisitante.golPartido) {
             this.equipoVisitante.puntosTotalesGrupo(1);
             return 1;
-        }else{
+        } else {
             return 0;
         }
     }

@@ -815,3 +815,21 @@ test('901_Cuando_Partidos_Deberia_DevolverLosPartidosDeFinal', () => {
     expect.arrayContaining(man.crearFinal());
 });
 //#endregion
+
+//#region TP1
+//13_[PARTIDO] Se debe poder hacer que en un partido un equipo no se presente y automáticamente gana el equipo contrario (sin goles a ninguno)
+test('13_Se debe poder hacer que en un partido un equipo no se presente y automáticamente gana el equipo contrario', ()=>{
+    const gr = new Grupo("C");
+    gr.AgregarEquipo(new Equipo("Argentina", "ARG"))
+    gr.AgregarEquipo(new Equipo("Arabia Saudita", "AS"))
+    gr.AgregarEquipo(new Equipo("Mexico", "MEX"))
+    gr.AgregarEquipo(new Equipo("Polonia", "POL"))
+
+    const local = new Equipo("Argentina", "ARG");
+    const visitante = new Equipo("Arabia Saudita", "AS");
+
+
+
+
+});
+//#endregion
