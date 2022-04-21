@@ -828,7 +828,11 @@ test('13_Se debe poder hacer que en un partido un equipo no se presente y autom√
     const local = new Equipo("Argentina", "ARG");
     const visitante = new Equipo("Arabia Saudita", "AS");
 
+    const partido = new Partido();
+    partido.creacionPartidos(1, gr, local, visitante);
+    partido.partidoAbandonadoLocal();
 
+    expect(gr.puntosPorEquipo(local)).toBe(0);
 
 
 });
