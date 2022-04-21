@@ -836,4 +836,21 @@ test('13_Se debe poder hacer que en un partido un equipo no se presente y automÃ
 
 
 });
+
+test('13_Se debe poder hacer que en un partido un equipo no se presente y automÃ¡ticamente gana el equipo contrario', ()=>{
+    const gr = new Grupo("C");
+    gr.AgregarEquipo(new Equipo("Argentina", "ARG"))
+    gr.AgregarEquipo(new Equipo("Arabia Saudita", "AS"))
+    gr.AgregarEquipo(new Equipo("Mexico", "MEX"))
+    gr.AgregarEquipo(new Equipo("Polonia", "POL"))
+
+    const local = new Equipo("Argentina", "ARG");
+    const visitante = new Equipo("Arabia Saudita", "AS");
+
+    const partido = new Partido();
+    partido.creacionPartidos(1, gr, local, visitante);
+    partido.partidoAbandonadoLocal();
+
+    expect(gr.puntosPorEquipo(visitante)).toBe(3);
+});
 //#endregion
