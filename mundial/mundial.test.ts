@@ -818,7 +818,7 @@ test('901_Cuando_Partidos_Deberia_DevolverLosPartidosDeFinal', () => {
 
 //#region TP1
 //13_[PARTIDO] Se debe poder hacer que en un partido un equipo no se presente y automáticamente gana el equipo contrario (sin goles a ninguno)
-test('13_Se debe poder hacer que en un partido un equipo no se presente y automáticamente gana el equipo contrario', ()=>{
+test('13_', ()=>{
     const gr = new Grupo("C");
     gr.AgregarEquipo(new Equipo("Argentina", "ARG"))
     gr.AgregarEquipo(new Equipo("Arabia Saudita", "AS"))
@@ -833,24 +833,9 @@ test('13_Se debe poder hacer que en un partido un equipo no se presente y autom�
     partido.partidoAbandonadoLocal();
 
     expect(gr.puntosPorEquipo(local)).toBe(0);
-
-
-});
-
-test('13_Se debe poder hacer que en un partido un equipo no se presente y automáticamente gana el equipo contrario', ()=>{
-    const gr = new Grupo("C");
-    gr.AgregarEquipo(new Equipo("Argentina", "ARG"))
-    gr.AgregarEquipo(new Equipo("Arabia Saudita", "AS"))
-    gr.AgregarEquipo(new Equipo("Mexico", "MEX"))
-    gr.AgregarEquipo(new Equipo("Polonia", "POL"))
-
-    const local = new Equipo("Argentina", "ARG");
-    const visitante = new Equipo("Arabia Saudita", "AS");
-
-    const partido = new Partido();
-    partido.creacionPartidos(1, gr, local, visitante);
-    partido.partidoAbandonadoLocal();
-
     expect(gr.puntosPorEquipo(visitante)).toBe(3);
+    expect(partido.ObtenerGolesLocalTotal()).toBe(0);
+    expect(partido.ObtenerGolesVisitanteTotal()).toBe(0);
+
 });
 //#endregion
