@@ -260,9 +260,9 @@
     "yargs-parser": "^20.2.9"
   },
   "scripts": {
-    "test": "test"
+    "test": "jest"
   },
-  "test": "test",
+  "test": "jest",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Zallmatt/Tp1-Canepa-Tomasella-Zalazar.git"
