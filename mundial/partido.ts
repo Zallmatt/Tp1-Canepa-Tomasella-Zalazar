@@ -45,6 +45,53 @@ export class Partido {
         return "Local: " + partido.equipoLocal.nombreEquipo + " Visitante: " + partido.equipoVisitante.nombreEquipo;
     }
 
+    public partidoAbandonadoLocal() {
+        this.abandonar=true;
+        if (this.abandonar == true) {
+            this.finalizarPartidoTotal = true;
+            if (this.finalizarPartidoTotal == true) {
+                this.equipoLocal.puntosTotalesGrupo(0);
+                this.equipoVisitante.puntosTotalesGrupo(3);
+                this.equipoLocal.golesTotalesEquipo();
+                this.equipoVisitante.golesTotalesEquipo();
+                for (let i = 0; i < 4; i++) {
+                    if (this.grupo.Equipos[i].nombreEquipo == this.equipoLocal.nombreEquipo) {
+                        this.grupo.Equipos[i] = this.equipoLocal;
+                    }
+                }
+                for (let j = 0; j < 4; j++) {
+                    if (this.grupo.Equipos[j].nombreEquipo == this.equipoVisitante.nombreEquipo) {
+                        this.grupo.Equipos[j] = this.equipoVisitante;
+                    }
+                }
+            }
+        }
+
+    }
+
+    public partidoAbandonadoVisitante() {
+        this.abandonar=true;
+        if (this.abandonar == true) {
+            this.finalizarPartidoTotal = true;
+            if (this.finalizarPartidoTotal == true) {
+                this.equipoVisitante.puntosTotalesGrupo(0);
+                this.equipoLocal.puntosTotalesGrupo(3);
+                this.equipoLocal.golesTotalesEquipo();
+                this.equipoVisitante.golesTotalesEquipo();
+                for (let i = 0; i < 4; i++) {
+                    if (this.grupo.Equipos[i].nombreEquipo == this.equipoLocal.nombreEquipo) {
+                        this.grupo.Equipos[i] = this.equipoLocal;
+                    }
+                }
+                for (let j = 0; j < 4; j++) {
+                    if (this.grupo.Equipos[j].nombreEquipo == this.equipoVisitante.nombreEquipo) {
+                        this.grupo.Equipos[j] = this.equipoVisitante;
+                    }
+                }
+            }
+        }
+
+    }
 
     //Goles
     public sumaGolLocal() {
