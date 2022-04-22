@@ -839,3 +839,6 @@ test('13_', ()=>{
 
 });
 //#endregion
+test('16_Un partido tiene un grupo de árbitros o jueces (3 en cancha y 3 en el VAR', () => {
+
+});
