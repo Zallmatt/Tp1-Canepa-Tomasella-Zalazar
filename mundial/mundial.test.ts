@@ -859,3 +859,27 @@ test('16_Un partido tiene un grupo de árbitros o jueces (3 en cancha y 3 en el 
     expect(partido1.arbitrosC.length).toBe(3);
     expect(partido1.arbitrosV.length).toBe(3);
 });
+
+
+test('Cuando un equipo se queda con menos de 7 jugadores (porque se retiran del partido). El equipo partido finaliza', () => {
+    const gr = new Grupo("C");
+    gr.AgregarEquipo(new Equipo("Argentina", "ARG"))
+    gr.AgregarEquipo(new Equipo("Arabia Saudita", "AS"))
+    gr.AgregarEquipo(new Equipo("Mexico", "MEX"))
+    gr.AgregarEquipo(new Equipo("Polonia", "POL"))
+
+    const local = new Equipo("Argentina", "ARG");
+    const visitante = new Equipo("Arabia Saudita", "AS");
+
+    const partido = new Partido();
+    partido.creacionPartidos(1, gr, local, visitante);
+
+    partido.jugadorLocalExpulsado();
+    partido.jugadorLocalExpulsado();
+    partido.jugadorLocalExpulsado();
+    partido.jugadorLocalExpulsado();
+    partido.jugadorLocalExpulsado();
+
+    expect(partido.finalizarPartidoTotal).toBe(true);
+
+});
