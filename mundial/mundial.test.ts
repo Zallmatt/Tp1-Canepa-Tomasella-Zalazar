@@ -863,3 +863,10 @@ test('16_Un partido tiene un grupo de árbitros o jueces (3 en cancha y 3 en el 
 
     expect(partido1.arbitrosC.length).toBe(5);
 });
+
+test('19_Cuando un equipo se queda con menos de 7 jugadores (porque se retiran del partido). El equipo partido finaliza', () => {
+   
+
+});
+
+
