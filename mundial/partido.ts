@@ -16,7 +16,6 @@ export class Partido {
     public arbitrosV: Array<Arbitro> = [];
 
 
-
     public AgregarArbitroV(arbitros:Arbitro) {//Nombre/Codigo
         if(arbitros.nombreArbitro !=""){
             const aux= new Arbitro(arbitros.nombreArbitro);
@@ -36,6 +35,20 @@ export class Partido {
     public ObtenerArbitros(){
         for(let i = 0; i<3; i++){
             this.arbitrosC[i].nombreArbitro;
+        }
+    }
+
+    public jugadorLocalExpulsado(){
+        this.equipoLocal.jugadores= this.equipoLocal.jugadores - 1;
+        if(this.equipoLocal.jugadores<7){
+            this.partidoAbandonadoLocal();
+        }
+    }
+
+    public jugadorVisitanteExpulsado(){
+        this.equipoLocal.jugadores= this.equipoLocal.jugadores - 1;
+        if(this.equipoLocal.jugadores<7){
+            this.partidoAbandonadoVisitante();
         }
     }
 
