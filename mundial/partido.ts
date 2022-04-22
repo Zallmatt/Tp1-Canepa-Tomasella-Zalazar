@@ -10,6 +10,7 @@ export class Partido {
     public finalizarPartidoRegular: boolean = false;
     public finalizarPartidoTotal: boolean = false;
     public abandonar = false;
+    public ganador:Equipo;
 
     constructor() {
     }
@@ -50,20 +51,7 @@ export class Partido {
         if (this.abandonar == true) {
             this.finalizarPartidoTotal = true;
             if (this.finalizarPartidoTotal == true) {
-                this.equipoLocal.puntosTotalesGrupo(0);
-                this.equipoVisitante.puntosTotalesGrupo(3);
-                this.equipoLocal.golesTotalesEquipo();
-                this.equipoVisitante.golesTotalesEquipo();
-                for (let i = 0; i < 4; i++) {
-                    if (this.grupo.Equipos[i].nombreEquipo == this.equipoLocal.nombreEquipo) {
-                        this.grupo.Equipos[i] = this.equipoLocal;
-                    }
-                }
-                for (let j = 0; j < 4; j++) {
-                    if (this.grupo.Equipos[j].nombreEquipo == this.equipoVisitante.nombreEquipo) {
-                        this.grupo.Equipos[j] = this.equipoVisitante;
-                    }
-                }
+              this.ganador=this.equipoVisitante;
             }
         }
 
@@ -74,20 +62,7 @@ export class Partido {
         if (this.abandonar == true) {
             this.finalizarPartidoTotal = true;
             if (this.finalizarPartidoTotal == true) {
-                this.equipoVisitante.puntosTotalesGrupo(0);
-                this.equipoLocal.puntosTotalesGrupo(3);
-                this.equipoLocal.golesTotalesEquipo();
-                this.equipoVisitante.golesTotalesEquipo();
-                for (let i = 0; i < 4; i++) {
-                    if (this.grupo.Equipos[i].nombreEquipo == this.equipoLocal.nombreEquipo) {
-                        this.grupo.Equipos[i] = this.equipoLocal;
-                    }
-                }
-                for (let j = 0; j < 4; j++) {
-                    if (this.grupo.Equipos[j].nombreEquipo == this.equipoVisitante.nombreEquipo) {
-                        this.grupo.Equipos[j] = this.equipoVisitante;
-                    }
-                }
+                this.ganador=this.equipoLocal;
             }
         }
 
