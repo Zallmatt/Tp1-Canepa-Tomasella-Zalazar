@@ -861,5 +861,6 @@ test('16_Un partido tiene un grupo de árbitros o jueces (3 en cancha y 3 en el 
     partido1.creacionPartidos(1, gr, local1, visitante1);
     partido1.sumaGolVisitante();
 
-    expect(partido1.arbitrosC.length).toBe(5);
+    expect(partido1.arbitrosC.length).toBe(3);
+    expect(partido1.arbitrosV.length).toBe(3);
 });
