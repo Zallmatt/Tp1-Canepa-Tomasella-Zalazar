@@ -5,6 +5,7 @@ export class Equipo{
     public golTiempoSuplementario:number=0;
     public golesTotales:number=0;
     public puntosTotales:number=0;
+    public jugadores:number =11;
 
     constructor(nombre:string, codigo:string){
         this.nombreEquipo=nombre;
