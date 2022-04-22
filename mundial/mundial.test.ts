@@ -863,4 +863,5 @@ test('16_Un partido tiene un grupo de árbitros o jueces (3 en cancha y 3 en el 
 
     expect(partido1.arbitrosC.length).toBe(3);
     expect(partido1.arbitrosV.length).toBe(3);
+    expect(partido1.arbitrosC[0].nombreArbitro).toBe("Roman");
 });
