@@ -819,7 +819,7 @@ test('901_Cuando_Partidos_Deberia_DevolverLosPartidosDeFinal', () => {
 
 //#region TP1
 //13_[PARTIDO] Se debe poder hacer que en un partido un equipo no se presente y automáticamente gana el equipo contrario (sin goles a ninguno)
-test('13_Se debe poder hacer que en un partido un equipo no se presente y automáticamente gana el equipo contrario (sin goles a ninguno)', ()=>{
+test('13_', ()=>{
     const gr = new Grupo("C");
     gr.AgregarEquipo(new Equipo("Argentina", "ARG"))
     gr.AgregarEquipo(new Equipo("Arabia Saudita", "AS"))
@@ -832,7 +832,12 @@ test('13_Se debe poder hacer que en un partido un equipo no se presente y autom�
     const partido = new Partido();
     partido.creacionPartidos(1, gr, local, visitante);
     partido.partidoAbandonadoLocal();
-    expect(partido.ganador).toBe(visitante);
+
+    expect(gr.puntosPorEquipo(local)).toBe(0);
+    expect(gr.puntosPorEquipo(visitante)).toBe(3);
+    expect(partido.ObtenerGolesLocalTotal()).toBe(0);
+    expect(partido.ObtenerGolesVisitanteTotal()).toBe(0);
+
 });
 //#endregion
 test('16_Un partido tiene un grupo de árbitros o jueces (3 en cancha y 3 en el VAR', () => {
@@ -894,7 +899,7 @@ test('19_Cuando un equipo se queda con menos de 7 jugadores (porque se retiran d
     const partido = new Partido();
     partido.creacionPartidos(1, gr, local, visitante);
 
-    
+    partido.jugadorLocalExpulsado();
     partido.jugadorLocalExpulsado();
     partido.jugadorLocalExpulsado();
     partido.jugadorLocalExpulsado();
@@ -907,7 +912,3 @@ test('19_Cuando un equipo se queda con menos de 7 jugadores (porque se retiran d
 
 
 
-    expect(partido1.arbitrosC.length).toBe(3);
-    expect(partido1.arbitrosV.length).toBe(3);
-    expect(partido1.arbitrosC[0].nombreArbitro).toBe("Roman");
-});
