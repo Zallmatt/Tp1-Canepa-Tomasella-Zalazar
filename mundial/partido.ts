@@ -1,3 +1,4 @@
+import { Arbitro } from "./arbitro";
 import { Equipo } from "./equipo";
 import { Grupo } from "./grupo";
 
@@ -11,6 +12,32 @@ export class Partido {
     public finalizarPartidoTotal: boolean = false;
     public abandonar = false;
     public ganador:Equipo;
+    public arbitrosC: Array<Arbitro> = [];
+    public arbitrosV: Array<Arbitro> = [];
+
+
+
+    public AgregarArbitroV(arbitros:Arbitro) {//Nombre/Codigo
+        if(arbitros.nombreArbitro !=""){
+            const aux= new Arbitro(arbitros.nombreArbitro);
+            this.arbitrosV.push(aux);
+            return true;
+        }
+
+    }
+    public AgregarArbitroC(arbitros:Arbitro) {//Nombre/Codigo
+        if(arbitros.nombreArbitro !=""){
+            const aux= new Arbitro(arbitros.nombreArbitro);
+            this.arbitrosC.push(aux);
+            return true;
+        }
+
+    }
+    public ObtenerArbitros(){
+        for(let i = 0; i<3; i++){
+            this.arbitrosC[i].nombreArbitro;
+        }
+    }
 
     constructor() {
     }
