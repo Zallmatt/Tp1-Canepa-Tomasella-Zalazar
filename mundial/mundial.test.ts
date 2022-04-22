@@ -3,6 +3,7 @@ import { Grupo } from "./grupo";
 import { Estadio } from './estadio';
 import { Partido } from './partido';
 import { Manager } from "./manager";
+import { Arbitro } from "./arbitro";
 
 //#region Equipo 
 //1_Cuando_SeCreaUnEquipo_Deberia_CrearseConNombreYCodigo
@@ -840,5 +841,25 @@ test('13_', ()=>{
 });
 //#endregion
 test('16_Un partido tiene un grupo de árbitros o jueces (3 en cancha y 3 en el VAR', () => {
+    const gr = new Grupo("C");
+    gr.AgregarEquipo(new Equipo("Qatar", "QTR"))
+    gr.AgregarEquipo(new Equipo("Ecuador", "ECU"))
+    gr.AgregarEquipo(new Equipo("Senegal", "SEN"))
+    gr.AgregarEquipo(new Equipo("Paises Bajos", "NED"))
 
+    const local1 = new Equipo("Qatar", "QTR");
+    const visitante1 = new Equipo("Ecuador", "ECU");
+
+    const partido1 = new Partido();
+    partido1.AgregarArbitroC(new Arbitro("Roman"));
+    partido1.AgregarArbitroC(new Arbitro("Enzo"));
+    partido1.AgregarArbitroC(new Arbitro("German"));
+    partido1.AgregarArbitroV(new Arbitro("Martin"));
+    partido1.AgregarArbitroV(new Arbitro("Nicolas"));
+    partido1.AgregarArbitroV(new Arbitro("Juan"));
+
+    partido1.creacionPartidos(1, gr, local1, visitante1);
+    partido1.sumaGolVisitante();
+
+    expect(partido1.arbitrosC.length).toBe(5);
 });
