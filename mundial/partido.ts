@@ -38,6 +38,21 @@ export class Partido {
         }
     }
 
+    public jugadorLocalExpulsado(){
+        this.equipoLocal.jugadores= this.equipoLocal.jugadores - 1;
+        if(this.equipoLocal.jugadores<7){
+            this.partidoAbandonadoLocal();
+        }
+    }
+
+    public jugadorVisitanteExpulsado(){
+        this.equipoLocal.jugadores= this.equipoLocal.jugadores - 1;
+        if(this.equipoLocal.jugadores<7){
+            this.partidoAbandonadoVisitante();
+        }
+    }
+
+
   
 
     constructor() {
