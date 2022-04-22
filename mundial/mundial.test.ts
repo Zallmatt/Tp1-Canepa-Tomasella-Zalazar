@@ -819,7 +819,8 @@ test('901_Cuando_Partidos_Deberia_DevolverLosPartidosDeFinal', () => {
 
 //#region TP1
 //13_[PARTIDO] Se debe poder hacer que en un partido un equipo no se presente y automáticamente gana el equipo contrario (sin goles a ninguno)
-test('13_Se debe poder hacer que en un partido un equipo no se presente y automáticamente gana el equipo contrario (sin goles a ninguno)', ()=>{
+test('13_Cuando_UnEquipoNoSePresenta_Deberia_DevolverGanador', ()=>{
+    
     const gr = new Grupo("C");
     gr.AgregarEquipo(new Equipo("Argentina", "ARG"))
     gr.AgregarEquipo(new Equipo("Arabia Saudita", "AS"))
@@ -835,8 +836,8 @@ test('13_Se debe poder hacer que en un partido un equipo no se presente y autom�
 
     expect(partido.ganador).toBe(visitante);
 });
-//#endregion
-test('16_Un partido tiene un grupo de árbitros o jueces (3 en cancha y 3 en el VAR', () => {
+
+test('16_Cuando_Partido_Deberia_Existir6Jueces(3Var/3Cancha)', () => {
     const gr = new Grupo("C");
     gr.AgregarEquipo(new Equipo("Qatar", "QTR"))
     gr.AgregarEquipo(new Equipo("Ecuador", "ECU"))
@@ -863,7 +864,8 @@ test('16_Un partido tiene un grupo de árbitros o jueces (3 en cancha y 3 en el 
 });
 
 //19_Cuando un equipo se queda con menos de 7 jugadores (porque se retiran del partido). El equipo partido finaliza
-test('19_Cuando un equipo se queda con menos de 7 jugadores (porque se retiran del partido). El equipo partido finaliza', () => {
+test('19_Cuando_UnEquipoSeQuedaConMenosDe7jugadores_Deberia_PartidoFinalizar', () => {
+
     const gr = new Grupo("C");
     gr.AgregarEquipo(new Equipo("Argentina", "ARG"))
     gr.AgregarEquipo(new Equipo("Arabia Saudita", "AS"))
@@ -886,7 +888,7 @@ test('19_Cuando un equipo se queda con menos de 7 jugadores (porque se retiran d
 
 });
 
-test('19_Cuando un equipo se queda con menos de 7 jugadores (porque se retiran del partido). El equipo partido finaliza', () => {
+test('19_Cuando_UnEquipoSeQuedaConMenosDe7jugadores_Deberia_PartidoFinalizar', () => {
     const gr = new Grupo("C");
     gr.AgregarEquipo(new Equipo("Argentina", "ARG"))
     gr.AgregarEquipo(new Equipo("Arabia Saudita", "AS"))
@@ -907,7 +909,7 @@ test('19_Cuando un equipo se queda con menos de 7 jugadores (porque se retiran d
     expect(partido.finalizarPartidoTotal).toBe(false);
 
 });
-
+//#endregion
 
 
 
